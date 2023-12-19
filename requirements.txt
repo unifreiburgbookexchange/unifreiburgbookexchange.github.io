@@ -1,4 +1,4 @@
-python-3.12.1
+python
 datetime
 pytz
 cs50
