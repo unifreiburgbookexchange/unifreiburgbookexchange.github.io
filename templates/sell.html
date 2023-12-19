@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upload Book
+{% endblock %}
+
+
+{% block main %}
+    <h1>Here you can upload a book that you want to sell / exchange</h1>
+    <br>
+    <hr>
+    <br>
+    <form action="/sell" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="file" autocomplete="off" autofocus class="form-control mx-auto w-auto" id="file" name="file" required/>
+            <small class="error">{{ imageerror1 }}</small>
+        </div>
+        <br>
+        <div>Allowed image types are: .jpg .png .jpeg<br> Can't be bigger than 3 MB</div>
+        <br>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="title" name="title" placeholder="Title" type="text" required/>
+            <small class="error">{{ titleerror }}</small>
+        </div>
+        <br>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="author" name="author" placeholder="Author" type="text" required/>
+            <small class="error">{{ authorerror }}</small>
+        </div>
+        <br>
+        <div class="form-group">
+            <textarea maxlength="500" rows="4" cols="50" autocomplete="off" autofocus class="form-control mx-auto w-auto" id="description" name="description" placeholder="Small Description, max 500 characters" type="text" required></textarea>
+            <small class="error">{{ descriptionerror }}</small>
+        </div>
+        <br>
+        <button class="btn btn-outline-dark" type="submit">Upload Book</button>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <div>
+    <h1>Already uploaded books</h1>
+    <hr>
+    <br>
+    <div class="container text-center">
+        <div class="row row-cols-auto">
+            {% for row in rows %}
+            <div class="col">
+                <div class="card" style="width: 30rem;">
+                    <img class="card-img-top" src="{{ row["path"] }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title: {{ row["title"] }}</h5>
+                        <h5 class="card-title">Author: {{ row["author"] }}</h5>
+                        <h5 class="card-title">Description:</h5>
+                        <p class="card-text">{{ row["description"] }}</p>
+                        <p class="card-text"></p>
+                        <form action="/delete" method="post">
+                            <input type="hidden" name="deletepath" value="{{ row["path"] }}"></hidden>
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

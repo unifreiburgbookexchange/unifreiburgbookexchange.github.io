@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Exchange
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h1>Here you can see the books that you are buying / exchanging!</h1>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="container text-center">
+        <br>
+        <div class="row row-cols-auto">
+            {% for row in rows %}
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ row["path"] }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title: {{ row["title"] }}</h5>
+                        <h5 class="card-title">Author: {{ row["author"] }}</h5>
+                        <h5 class="card-title">Description:</h5>
+                        <p class="card-text">{{ row["description"] }}</p>
+                        <p class="card-text"></p>
+                        <hr>
+                        <h5 class="card-title">Owner: {{ row["username"] }}</h5>
+                        <hr>
+                        <h5 class="card-title">I want to {{ row["method"] }}</h5>
+                        <hr>
+                        <form action="/exchange" method="post">
+                            <input type="hidden" name="exchangeid" value="{{ row["exchangeid"] }}"></hidden>
+                            <button name="contact" class="btn btn-outline-dark" type="submit">Contact {{ row["username"] }}</button>
+                            <button name="delete" class="btn btn-outline-danger" type="submit">Not interested anymore</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

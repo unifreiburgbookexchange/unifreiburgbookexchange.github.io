@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Chat with owners
+{% endblock %}
+
+{% block main %}
+    <h1>Chat with the owners</h1>
+    <br>
+    <hr>
+    <br>
+    <div class="accordion">
+    {% for row in rows %}
+        <div class="accordion-item">
+            <br>
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ row["id"] }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ row["id"] }}">
+                    Chat with: {{ row["ownerid"] }} About: {{ row["title"]}}
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapse{{ row["id"] }}" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    <div class="scrollbox">
+                        {% for x in range(lentworows) %}
+                            {% if exchangeids[x] == row["id"] %}
+                                <p>{{ senders[x] }}: {{ messages[x] }}</p>
+                                <br>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <form action="/chat" method="post" class="form-inline">
+                    <div class="chatinput">
+                        <div class="cell">
+                            <input type="hidden" name="exchangeid" value="{{ row["id"] }}">
+                            <input type="hidden" name="ownerid" value="{{ row["ownerid"] }}">
+                            <input type="hidden" name="buyerid" value="{{ row["buyerid"] }}">
+                            <input name="chat" class="form-control" type="text" placeholder="Chat" required>
+                        </div>
+                        <div class="cell">
+                            <button name="send" class="btn btn-dark" type="submit">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

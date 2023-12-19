@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    MyProfile
+{% endblock %}
+
+{% block main %}
+    <h1>Here you can see your profile</h1>
+    <br>
+    <hr>
+    <br>
+    <small class="success">{{ message }}</small>
+    {% for row in rows %}
+    <form action="/myprofile" method="post">
+        <div class="form-group">
+            <label for="email">Email:</label><br>
+            <input class="form-control mx-auto w-auto" type="text" name="email" placeholder="{{ row["email"] }}" readonly>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="username">Username:</label><br>
+            <input class="form-control mx-auto w-auto" type="text" name="username" placeholder="{{ row["username"] }}" readonly>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password">Change Password:</label><br>
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="New password" type="password">
+            <small class="error">{{ passworderror }}</small>
+        </div>
+        <br>
+        <div class="form-group">
+            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Confirm password" type="password">
+            <small class="error">{{ confirmationerror }}</small>
+        </div>
+        <small class="error">{{ error }}</small>
+        <br>
+        <button name="changepwd" class="btn btn-outline-dark" type="submit">Change password</button>
+        <br>
+        <br>
+        <br>
+        <button name="deleteacc" class="btn btn-danger" type="submit" onclick="return confirm('Are you sure? Everything about your account will be deleted.')">Delete Account</button>
+    </form>
+    {% endfor %}
+
+{% endblock %}

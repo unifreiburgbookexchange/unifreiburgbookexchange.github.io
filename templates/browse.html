@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Browse
+{% endblock %}
+
+{% block main %}
+    <small class="error">{{ error }}</small>
+    <div>
+        <h1>Here you can browse for books that others are selling / exchanging!</h1>
+    </div>
+    <br>
+    <hr>
+    <div class="container text-center">
+        <div class="row row-cols-auto">
+            {% for row in rows %}
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ row["path"] }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Book Title: {{ row["title"] }}</h5>
+                        <h5 class="card-title">Author: {{ row["author"] }}</h5>
+                        <h5 class="card-title">Description:</h5>
+                        <p class="card-text">{{ row["description"] }}</p>
+                        <h5 class="card-title">Owner: {{ row["username"] }}</h5>
+                        <form action="/browse" method="post">
+                            <input type="hidden" name="bookid" value="{{ row["id"] }}"></hidden>
+                            <input type="hidden" name="ownerid" value="{{ row["userid"] }}"></hidden>
+                            <input type="hidden" name="username" value="{{ row["username"] }}"></hidden>
+                            <button name="buttonbuy" class="btn btn-outline-primary" type="submit">Buy</button>
+                            <button name="buttonexchange" class="btn btn-outline-success" type="submit">Exchange</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

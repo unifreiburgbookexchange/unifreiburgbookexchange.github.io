@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contact
+{% endblock %}
+
+{% block main %}
+    <h1>Contact the Owner of the Book</h1>
+    <hr>
+    {{ message }}
+    {% for row in rows %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Book Title: {{ row["title"] }}</h5>
+            <hr>
+            <h5 class="card-title">Owner: {{ row["ownername"] }}</h5>
+            <hr>
+            <h5 class="card-title">I want to {{ row["method"] }}</h5>
+            <hr>
+            <h5 class="card-title">Message to owner of the book:</h5>
+            <br>
+            <form action="/contact" method="post">
+                <input type="hidden" name="ownerid" value="{{ row["ownerid"] }}">
+                <div class="form-group">
+                    <textarea maxlength="500" rows="4" cols="50" autocomplete="off" autofocus class="form-control mx-auto w-auto" id="comment" name="comment" placeholder="Should contain what you are willing to exchange / pay for the book, max 500 characters" type="text" required></textarea>
+                    <small class="error">{{ descriptionerror }}</small>
+                </div>
+                <button class="btn btn-outline-dark" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

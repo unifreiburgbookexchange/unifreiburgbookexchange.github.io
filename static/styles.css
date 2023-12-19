@@ -1,0 +1,138 @@
+/* General design for everything */
+*
+{
+    /* Font family to have a fall back system if the first font doesnt work for the user */
+    font-family: sans-serif, 'Verdana', 'Trebuchet MS', Arial, sans-serif;
+    font-variant: small-caps;
+    color: #000;
+}
+.overlay-text
+{
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 400%;
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    color: #fff;
+}
+.bg
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+.chatinput
+{
+    padding: 10px;
+    margin: 10px;
+    display: table;
+}
+.cell
+{
+    padding: 5px;
+    margin: 5px;
+    display: table-cell;
+}
+input[type="text"], textarea
+{
+    background-color : #fff;
+}
+img
+{
+    max-width: 40%;
+    max-height: 40%;
+}
+
+.scrollbox
+{
+    height: 400px;
+    width: auto;
+    line-height: 0.8;
+    border: 1px solid #ccc;
+    overflow: auto;
+    text-align: left;
+}
+.form-control
+{
+    color: #000;
+}
+
+#body
+{
+    background: #fff;
+}
+
+.success
+{
+    color: green;
+}
+.error
+{
+    color: red;
+}
+
+/* Design of Cards */
+.card
+{
+    margin: 5px;
+    padding: 5px;
+}
+.card-img-top
+{
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px black;
+    width: 500px;
+    margin: 3px;
+    padding: 3px;
+}
+
+.card-body
+{
+    text-align: left;
+    background: #fff;
+    background-color: #fff;
+    color: #000;
+}
+.card-title
+{
+    color: #000;
+    background-color: #fff;
+}
+.card-text
+{
+    color: #000;
+    background-color: #fff;
+    font: sans-serif;
+}
+
+/* Design of the navbar */
+nav .navbar-toggler
+{
+    background: #000;
+}
+nav .navbar-toggler-icon
+{
+    color: #fff;
+}
+nav .navbar-brand
+{
+    font-size: xx-large;
+    color: #17252A;
+}
+nav .nav-link
+{
+    color: #17252A;
+}
+nav .navbar-brand:hover
+{
+    color: #E98074;
+}
+nav .nav-link:hover
+{
+    color: #E98074;
+}
+nav .navbar-nav
+{
+    padding: 2rem 2rem;
+}

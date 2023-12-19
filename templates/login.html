@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <h2>Log In</h2>
+    <br>
+    <br>
+    <form action="/login" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
+            <small class="error">{{ usernameerror }}</small>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+            <small class="error">{{ passworderror }}</small>
+        </div>
+        <small class="error">{{ botherror }}</small>
+        <br>
+        <br>
+        <button class="btn btn-outline-dark" type="submit">Log In</button>
+    </form>
+{% endblock %}
