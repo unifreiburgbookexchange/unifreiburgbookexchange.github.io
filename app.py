@@ -16,6 +16,7 @@ from helpers import login_required
 # Configure application
 app = Flask(__name__)
 
+
 # Configure session to use filesystem (instead of signed cookies) like in pset9
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -492,3 +493,6 @@ def login():
     # Method Get
     else:
         return render_template("login.html")
+
+if __name__ == "__main__":
+    app.run(debug=False,host='0.0.0.0')
