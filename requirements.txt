@@ -1,8 +1,8 @@
+python-3.12.1
 datetime
 pytz
 cs50
 flask
 flask_session
 werkzeug
-functools
 Gunicorn
