@@ -1,4 +1,3 @@
-python
 datetime
 pytz
 cs50
